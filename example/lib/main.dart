@@ -11,7 +11,7 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   int _volumeLevel = 0;
 
-  FlutterVolumePlugin _volumePlugin = new FlutterVolumePlugin();
+  FlutterVolumePlugin _volumePlugin = FlutterVolumePlugin();
 
   @override
   void initState() {

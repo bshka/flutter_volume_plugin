@@ -6,10 +6,8 @@ typedef void VolumeListener(int volume);
 
 class FlutterVolumePlugin {
 
-  static const VOLUME_UNAVAILABLE = -1;
-
   static const MethodChannel _channel =
-      const MethodChannel('itech-art.com/flutter_volume_plugin');
+      MethodChannel('itech-art.com/flutter_volume_plugin');
 
   static const _getVolume = 'getVolume';
   static const _setVolume = 'setVolume';
@@ -22,7 +20,7 @@ class FlutterVolumePlugin {
 
   static const _parameterVolume = 'volume';
 
-  List<VolumeListener> _listeners = new List();
+  List<VolumeListener> _listeners = List();
 
   FlutterVolumePlugin() {
     _channel.setMethodCallHandler((MethodCall call) async {
@@ -37,12 +35,12 @@ class FlutterVolumePlugin {
     });
   }
 
-  void _startVolumeListener() async {
-      _channel.invokeMethod(_startListener);
+  void _startVolumeListener() {
+    _channel.invokeMethod(_startListener);
   }
 
   void _stopVolumeListener() {
-      _channel.invokeMethod(_stopListener);
+    _channel.invokeMethod(_stopListener);
   }
 
   void addVolumeListener(VolumeListener listener) {
@@ -62,7 +60,7 @@ class FlutterVolumePlugin {
   }
 
   Future<int> get volume async {
-      return await _channel.invokeMethod(_getVolume);
+    return await _channel.invokeMethod(_getVolume);
   }
 
   Future<void> setVolume(int volume) async {
@@ -70,7 +68,7 @@ class FlutterVolumePlugin {
   }
 
   Future<void> volumeUp() async {
-      await _channel.invokeMethod(_volumeUp);
+    await _channel.invokeMethod(_volumeUp);
   }
 
   Future<void> volumeDown() async {
